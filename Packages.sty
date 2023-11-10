@@ -1,8 +1,8 @@
-\ProvidesPackage{ProjectSpecificAdditionalPackages}
+\ProvidesPackage{Packages}
 
-\usetheme{LeipzigChemie}
+\usetheme{HTWKLeipzig}
 \usepackage{import}
-\usepackage[backend=biber,style=science,doi=false,isbn=false,url=false,eprint=false,date=year,citestyle=numeric-comp,]{biblatex}
+\usepackage[backend=biber,doi=false,isbn=false,url=false,eprint=false,date=year,citestyle=numeric-comp,]{biblatex}
 \usepackage{hyperref}
 \usepackage{tcolorbox}
 \usepackage{tabularx}
@@ -10,18 +10,18 @@
 %%%%%%%%%%%%%% Noteblock %%%%%%%%%%%%%%%%%%%%%%%
 \newtcolorbox{mynote}[1][Note]{
 	colback=white,
-	colbacktitle=aquamarin,
+	colbacktitle=mainColor,
 	coltitle=white,
-	colframe=aquamarin,
+	colframe=mainColor,
 	titlerule=1pt,
 	title={\strut#1}
 }
 %%%%%%%%%%%%%% Alertblock %%%%%%%%%%%%%%%%%%%%%%%%%%
 \newtcolorbox{myalert}[1][Alert]{
 	colback=white,
-	colbacktitle=karneol,
+	colbacktitle=red,
 	coltitle=white,
-	colframe=karneol,
+	colframe=red,
 	titlerule=1pt,
 	title={\strut#1}
 }

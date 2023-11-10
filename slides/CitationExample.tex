@@ -9,6 +9,7 @@
         \item To add more foot space add more \verb|\addfootspace{}|. 
     \end{itemize}
 \addfootspace{} %\addfootspace{}
+\addfootspace{}
 \end{frame}
 \subsection{Subsection-2}
 \begin{frame}[fragile]{2nd frame}
@@ -31,27 +32,19 @@ $\bullet$ This is a test for sub-sub-section.
 \begin{enumerate}
 
     \item Here is a super citation example \cite{Rubel2014, Nicklas2010}.
-    \item Here is an one liner multi-citation example \footfullcite{Rubel2014, Nicklas2010} with a footnote \renewcommand{\thefootnote}{\roman{footnote}}\footnote{Hello world}.
+    \item Here is a one-liner multi-citation example \footfullcite{Rubel2014, Nicklas2010} with a footnote \renewcommand{\thefootnote}{\roman{footnote}}\footnote{Hello world}.
 \end{enumerate}
 \end{frame}
 
 \subsection{Subsection-2}
 \begin{frame}{2nd frame}
     \begin{itemize}
-        \item Here is a inplace citation example. [{\scriptsize \fullcite{Rosenow2018}}]
+        \item Here is an in place citation example. [{\scriptsize \fullcite{Rosenow2018}}]
         \item Here is a multiple citation example. \footfullcite{Rosenow2018}$^,$\footfullcite{VandeWalle2002}$^,$\footfullcite{Vurgaftman2001}
         \item Test large list
         \item Test large list
         \item Test large list
-        \item Test large list
-        \item Test large list
-        \item Test large list
-        \item Test large list
-        \item Test large list
-        
+        \item Test large list        
     \end{itemize}
 \end{frame}
 
-\begin{frame}{All references}
-    \printbibliography%[heading=bibnumbered]
-\end{frame}

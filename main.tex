@@ -1,14 +1,10 @@
 %------------- Defines the beamer size ------------------------
-%\def\BeamerAspectRatio{43} % Uncomment this line for 4to3 ratio
-\ifdefined\BeamerAspectRatio
-\else
-    \def\BeamerAspectRatio{169} % Default slide size ratio 16:9
-\fi
+\def\BeamerAspectRatio{43} % Default slide size ratio 16:9
 
 %--------------- Defines beamer document ----------------------
 \documentclass[aspectratio=\BeamerAspectRatio]{beamer}
 
-\usepackage{ProjectSpecificAdditionalPackages}
+\usepackage{Packages}
 
 \import{./}{TitlePageInfo.tex}
 \addbibresource{references.bib}
@@ -29,5 +25,6 @@
 \import{slides/}{Summary.tex}
 \import{slides/}{Acknowledgement.tex}
 \import{slides/}{disclaimer.tex}
-%%\import{./}{test.tex}
+
+\import{./slides}{/citations/citations.tex}
 \end{document}
