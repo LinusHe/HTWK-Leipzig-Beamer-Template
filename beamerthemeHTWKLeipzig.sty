@@ -41,11 +41,11 @@
     \begingroup
     \begin{beamercolorbox}[wd=\textwidth,ht=2.5em,dp=1em]{headline}
         \begin{columns}
-            \begin{column}{.65\textwidth}
-                \hbox to {\hfil\includegraphics[width=2cm,keepaspectratio]{imglib/HTWK_OHNE.png}} % Adjust the space as needed
+            \begin{column}{.70\textwidth}
+                \includegraphics[width=2cm,keepaspectratio]{imglib/HTWK_OHNE.png} % Adjust the space as needed
             \end{column}
-            \begin{column}{.35\textwidth}
-                \hfill\includegraphics[width=2.5cm,keepaspectratio]{imglib/FIM_SCREEN.png} % Adjust the space as needed
+            \begin{column}{.30\textwidth}
+                \includegraphics[width=2.5cm,keepaspectratio]{imglib/FIM_SCREEN.png} % Adjust the space as needed
             \end{column}
         \end{columns}
     \end{beamercolorbox}
@@ -56,7 +56,7 @@
         \usebeamerfont{title}\inserttitle\par%
         \ifx\insertsubtitle\@empty%
         \else%
-        \vskip0.25em%
+        \vskip0.5em%
             {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
         \fi%     
     \end{beamercolorbox}%
@@ -80,18 +80,9 @@
             \end{beamercolorbox}
         \end{column}
     \end{columns}
-    \vskip2em
+    \vskip2em\par
     \endgroup
 }
-
-
-\newcommand{\GroupLogo}[1]{\addtobeamertemplate{title page}{
-    \begin{tikzpicture}[remember picture, overlay]
-        \node[anchor=south west] (image) at (0.6\textwidth,-3.5){\includegraphics[height=0.2\textheight]{#1}};
-
-    \end{tikzpicture}
-
-}}
 
 \makeatother
 
@@ -102,8 +93,8 @@
 \setbeamertemplate{background}{
     \begin{tikzpicture}[remember picture, overlay,shift=(current page.north west)]
         \begin{scope}[x={(current page.north east)},y={(current page.south west)}]
-            \path[gray, thin]  (0.07,0.89) edge node[right, yshift=3pt] {\textcolor{black}{\tiny \textsf{\firstLine}}} (0.07,.98);
-            \path[gray]  (0.07,0.89) edge node[right, yshift=-3pt] {\textcolor{black}{\tiny \textsf{\secondLine}\hspace*{0.915\textwidth}}\textcolor{mainColor}{\tiny \insertframenumber}} (0.07,.98);
+            \path[gray, thin]  (0.07,0.89) edge node[right, yshift=3pt] {\textcolor{black}{\tiny \textsf{\firstLine}}} (0.07,0.98);
+            \path[gray]  (0.07,0.89) edge node[right, yshift=-3pt] {\textcolor{black}{\tiny \textsf{\secondLine}\hspace*{0.915\textwidth}}\textcolor{mainColor}{\tiny \insertframenumber}} (0.07,0.98);
 
 
             \draw[mainColor,fill=mainColor, thin] (0.05,0.07) -- (0.01,0.07) -- (0.01,0.19) -- (0.05,0.19) -- cycle;
