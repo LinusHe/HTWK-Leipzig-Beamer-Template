@@ -50,8 +50,7 @@
         \end{columns}
     \end{beamercolorbox}
     \vskip1em\par
-    \centering
-    \vspace*{4em} % Adjust the vertical space as needed
+    \vspace*{4em}
     \begin{beamercolorbox}[sep=8pt,center]{title}
         \usebeamerfont{title}\inserttitle\par%
         \ifx\insertsubtitle\@empty%
@@ -60,27 +59,17 @@
             {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
         \fi%     
     \end{beamercolorbox}%
-    \vskip6em\par
+    \vskip5em\par
 
-    \vskip1em\par
-    \begin{columns}
-        \begin{column}{.55\textwidth}
-            \centering
-            \begin{beamercolorbox}{date}
-                \usebeamerfont{date}\insertdate
-            \end{beamercolorbox}
-            \begin{beamercolorbox}{author}
-                \usebeamerfont{author}\insertauthor
-            \end{beamercolorbox}
-        \end{column}
-        \begin{column}{.45\textwidth}
-            \centering
-            \begin{beamercolorbox}{institute}
-                \usebeamerfont{institute}\insertinstitute
-            \end{beamercolorbox}
-        \end{column}
-    \end{columns}
-    \vskip2em\par
+    \vfill\par
+
+    \begin{tikzpicture}[remember picture, overlay,shift=(current page.north west)]
+        \begin{scope}
+            [x={(current page.north east)},y={(current page.south west)}]
+            \node[anchor=south west, black] at (0.03,0.96) {\textcolor{black}{\tiny \textsf{\insertdate}}};
+            \node[anchor=south east, black] at (0.96,0.96) {\textcolor{black}{\tiny \textsf{\firstLine}}};
+        \end{scope}
+    \end{tikzpicture}
     \endgroup
 }
 
@@ -96,10 +85,10 @@
             [x={(current page.north east)},y={(current page.south west)}]
             \draw[mainColor,fill=mainColor, thin] (0.0,0.03) -- (0.03,0.03) -- (0.03,0.15) -- (0.0,0.15) -- cycle;
             \draw[mainColor,fill=mainColor, thin] (0.97,0.03) -- (1,0.03) -- (1,0.15) -- (0.97,0.15) -- cycle;
-            \node[anchor=south west, black, yshift=3pt] at (0.07,0.96) {\textcolor{black}{\tiny \textsf{\firstLine}}};
-            \node[anchor=south west, black, yshift=-3pt] at (0.07,0.96) {\textcolor{black}{\tiny \textsf{\secondLine}}};
+            \node[anchor=south west, black, yshift=3pt] at (0.055,0.96) {\textcolor{black}{\tiny \textsf{\firstLine}}};
+            \node[anchor=south west, black, yshift=-3pt] at (0.055,0.96) {\textcolor{black}{\tiny \textsf{\secondLine}}};
             % Add page number at bottom left
-            \node[anchor=south west, black] at (0.02, 0.96) { \insertframenumber};
+            \node[anchor=south west, black] at (0.018, 0.96) { \insertframenumber};
 
             %LOGO 
             \node[anchor=south west, black] at (0.86, 0.96) { \includegraphics[height=10pt, keepaspectratio]{imglib/HTWK_OHNE.png}};
@@ -133,10 +122,10 @@
             [x={(current page.north east)},y={(current page.south west)}]
             \draw[mainColor,fill=mainColor, thin] (0.0,0.2) -- (0.03,0.2) -- (0.03,0.7) -- (0.0,0.7) -- cycle;
             \draw[mainColor,fill=mainColor, thin] (0.97,0.2) -- (1,0.2) -- (1,0.7) -- (0.97,0.7) -- cycle;
-            \node[anchor=south west, black, yshift=3pt] at (0.07,0.96) {\textcolor{black}{\tiny \textsf{\firstLine}}};
-            \node[anchor=south west, black, yshift=-3pt] at (0.07,0.96) {\textcolor{black}{\tiny \textsf{\secondLine}}};
+            \node[anchor=south west, black, yshift=3pt] at (0.055,0.96) {\textcolor{black}{\tiny \textsf{\firstLine}}};
+            \node[anchor=south west, black, yshift=-3pt] at (0.055,0.96) {\textcolor{black}{\tiny \textsf{\secondLine}}};
             % Add page number at bottom left
-            \node[anchor=south west, black] at (0.02, 0.96) { \insertframenumber};
+            \node[anchor=south west, black] at (0.018, 0.96) { \insertframenumber};
 
             %LOGO 
             \node[anchor=south west, black] at (0.86, 0.96) { \includegraphics[height=10pt, keepaspectratio]{imglib/HTWK_OHNE.png}};
@@ -172,7 +161,7 @@
 
 % Table of contents color and indentation
 %-------- Many thanks to Victor Jüttner for this part -----------------------
-\setbeamercolor{section in toc}{fg=mainColor}
+\setbeamercolor{section in toc}{fg=black}
 
 \defbeamertemplate{section in toc}{mysections numbered}
 {\leavevmode
