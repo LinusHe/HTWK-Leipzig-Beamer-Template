@@ -1,15 +1,15 @@
 \ProvidesPackage{beamerthemeHTWKLeipzig}[09/11/2023]
 
-
-\usepackage{fontspec}
-\setsansfont{Arial}
+% Replace fontspec with helvet for Arial-like font
+\usepackage[scaled]{helvet}
+\renewcommand{\familydefault}{\sfdefault}
 
 \usepackage{tikz}
 
 \mode<presentation>
 
 %%%%%%% Define color %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\definecolor{mainColor}{RGB}{138, 194, 209}
+\definecolor{mainColor}{RGB}{255, 237, 0}
 
 \definecolor{hellgrau}{RGB}{201, 201, 201}
 \definecolor{basalt}{RGB}{38, 42, 49}
@@ -22,13 +22,13 @@
 % trim={<left> <lower> <right> <upper>}
 }
 
-\institute
-{\faculty
-\\\university}
+% \institute
+% {\faculty
+% \\\university}
 
 %FOOTER TEXT
-\newcommand{\firstLine}{\insertauthor, \faculty}
-\newcommand{\secondLine}{\universityLong}
+\newcommand{\firstLine}{\textbf{Linus Herterich}, Medieninformatik Master 22-MIM}
+\newcommand{\secondLine}{Hochschule für Technik, Wirtschaft und Kultur Leipzig}
 
 
 \makeatletter
@@ -42,16 +42,16 @@
     \begin{beamercolorbox}[wd=\textwidth,ht=2.5em,dp=1em]{headline}
         \begin{columns}
             \begin{column}{.70\textwidth}
-                \includegraphics[width=2cm,keepaspectratio]{imglib/HTWK_OHNE.png} % Adjust the space as needed
+                \includegraphics[height=1.4em,keepaspectratio]{imglib/HTWK_RECHTS.png} % Adjust the space as needed
             \end{column}
             \begin{column}{.30\textwidth}
-                \includegraphics[width=2.5cm,keepaspectratio]{imglib/FIM_SCREEN.png} % Adjust the space as needed
+                \hfill\includegraphics[height=1.4em,keepaspectratio]{imglib/FIM_SCREEN.png} % Adjust the space as needed
             \end{column}
         \end{columns}
     \end{beamercolorbox}
     \vskip1em\par
     \centering
-    \vspace*{2em} % Adjust the vertical space as needed
+    \vspace*{4em} % Adjust the vertical space as needed
     \begin{beamercolorbox}[sep=8pt,center]{title}
         \usebeamerfont{title}\inserttitle\par%
         \ifx\insertsubtitle\@empty%
@@ -92,39 +92,37 @@
 %%%%%%% Footline background (not footer) %%%%%%%%%%%%%%%%%%%%
 \setbeamertemplate{background}{
     \begin{tikzpicture}[remember picture, overlay,shift=(current page.north west)]
-        \begin{scope}[x={(current page.north east)},y={(current page.south west)}]
-            \path[gray, thin]  (0.07,0.89) edge node[right, yshift=3pt] {\textcolor{black}{\tiny \textsf{\firstLine}}} (0.07,0.98);
-            \path[gray]  (0.07,0.89) edge node[right, yshift=-3pt] {\textcolor{black}{\tiny \textsf{\secondLine}\hspace*{0.915\textwidth}}\textcolor{mainColor}{\tiny \insertframenumber}} (0.07,0.98);
-
-
-            \draw[mainColor,fill=mainColor, thin] (0.05,0.07) -- (0.01,0.07) -- (0.01,0.19) -- (0.05,0.19) -- cycle;
-            \draw[mainColor,fill=mainColor, thin] (0.95,0.07) -- (0.99,0.07) -- (0.99,0.19) -- (0.95,0.19) -- cycle;
-            
+        \begin{scope}
+            [x={(current page.north east)},y={(current page.south west)}]
+            \draw[mainColor,fill=mainColor, thin] (0.0,0.03) -- (0.03,0.03) -- (0.03,0.15) -- (0.0,0.15) -- cycle;
+            \draw[mainColor,fill=mainColor, thin] (0.97,0.03) -- (1,0.03) -- (1,0.15) -- (0.97,0.15) -- cycle;
+            \node[anchor=south west, black, yshift=3pt] at (0.07,0.96) {\textcolor{black}{\tiny \textsf{\firstLine}}};
+            \node[anchor=south west, black, yshift=-3pt] at (0.07,0.96) {\textcolor{black}{\tiny \textsf{\secondLine}}};
             % Add page number at bottom left
             \node[anchor=south west, black] at (0.02, 0.96) { \insertframenumber};
 
             %LOGO 
-            \node[anchor=south west, black] at (0.86, 0.965) { \includegraphics[height=10pt, keepaspectratio]{imglib/HTWK_OHNE.png}};
+            \node[anchor=south west, black] at (0.86, 0.96) { \includegraphics[height=10pt, keepaspectratio]{imglib/HTWK_OHNE.png}};
         \end{scope}
     \end{tikzpicture}
 }
 
 %%%%%%% Headline %%%%%%%%%%%%%%%%%%%%
 \setbeamertemplate{headline}{
-    \begin{beamercolorbox}[wd=\paperwidth, ht=4mm]{title in head/foot}
-        % gray and black line at the start
-        \begin{tikzpicture}
-            \draw [white](0,0)--(0.8,0); % Only to help position other lines
-            \draw [black, very thin](0,.08) -- (.8,.08);
-            \draw [black, very thin] (0,.11) -- (.8,.11);
-        \end{tikzpicture}
-        \small \ \textbf{\insertshorttitle}\ | \insertsection
+    % \begin{beamercolorbox}[wd=\paperwidth, ht=4mm]{title in head/foot}
+    %     % gray and black line at the start
+    %     \begin{tikzpicture}
+    %         \draw [white](0,0)--(0.8,0); % Only to help position other lines
+    %         \draw [black, very thin](0,.08) -- (.8,.08);
+    %         \draw [black, very thin] (0,.11) -- (.8,.11);
+    %     \end{tikzpicture}
+    %     \small \ \textbf{\insertshorttitle}\ | \insertsection
 
-    \end{beamercolorbox}
+    % \end{beamercolorbox}
 
 }
 %%%%%%% Frame title %%%%%%%%%%%%%%%
-\setbeamertemplate{frametitle}{\vskip 10pt\color{black}\bfseries \insertframetitle\par \vskip 2pt}
+\setbeamertemplate{frametitle}{\vskip 10pt\color{black}\bfseries \insertframetitle\par \vskip 16pt}
 
 
 %%%%%%%%%%%%%%%%%%%% Section page layout for 16/9 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -133,15 +131,15 @@
     \begin{tikzpicture}[remember picture, overlay,shift=(current page.north west)]
         \begin{scope}
             [x={(current page.north east)},y={(current page.south west)}]
-            \draw[mainColor,fill=mainColor, thin] (0.05,0.2) -- (0.01,0.2) -- (0.01,0.7) -- (0.05,0.7) -- cycle;
-            \draw[mainColor,fill=mainColor, thin] (0.95,0.2) -- (0.99,0.2) -- (0.99,0.7) -- (0.95,0.7) -- cycle;
-            \path[gray, thin]  (0.07,0.89) edge node[right, yshift=3pt] {\textcolor{black}{\tiny \textsf{\firstLine}}} (0.07,.98);
-            \path[gray]  (0.07,0.89) edge node[right, yshift=-3pt] {\textcolor{black}{\tiny \textsf{\secondLine}}} (0.07,.98);
+            \draw[mainColor,fill=mainColor, thin] (0.0,0.2) -- (0.03,0.2) -- (0.03,0.7) -- (0.0,0.7) -- cycle;
+            \draw[mainColor,fill=mainColor, thin] (0.97,0.2) -- (1,0.2) -- (1,0.7) -- (0.97,0.7) -- cycle;
+            \node[anchor=south west, black, yshift=3pt] at (0.07,0.96) {\textcolor{black}{\tiny \textsf{\firstLine}}};
+            \node[anchor=south west, black, yshift=-3pt] at (0.07,0.96) {\textcolor{black}{\tiny \textsf{\secondLine}}};
             % Add page number at bottom left
             \node[anchor=south west, black] at (0.02, 0.96) { \insertframenumber};
 
             %LOGO 
-            \node[anchor=south west, black] at (0.86, 0.965) { \includegraphics[height=10pt, keepaspectratio]{imglib/HTWK_OHNE.png}};
+            \node[anchor=south west, black] at (0.86, 0.96) { \includegraphics[height=10pt, keepaspectratio]{imglib/HTWK_OHNE.png}};
         \end{scope}
 
     \end{tikzpicture}
@@ -161,8 +159,8 @@
         \begin{tikzpicture}[remember picture, overlay,shift=(current page.north west)]
             \begin{scope}
                 [x={(current page.north east)},y={(current page.south west)}]
-                \draw[mainColor,fill=mainColor, thin] (0.1,0.3) -- (0.30,0.25) -- (0.45,1) -- (0.25,1) -- cycle;
-                \draw[mainColor,fill=mainColor, thin] (0.6,0.3) -- (0.80,0.25) -- (0.95,1) -- (0.75,1) -- cycle;
+                \draw[mainColor,fill=mainColor, thin] (0.15,0.3) -- (0.30,0.25) -- (0.45,1) -- (0.3,1) -- cycle;
+                \draw[mainColor,fill=mainColor, thin] (0.55,0.3) -- (0.70,0.25) -- (0.85,1) -- (0.7,1) -- cycle;
 
             \end{scope}
         \end{tikzpicture}}
