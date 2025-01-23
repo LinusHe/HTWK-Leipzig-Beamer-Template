@@ -1,8 +1,9 @@
-# NO OFFICAL HTWK LEIPZIG TEMPLATE
-# NO GURANTEE IT WILL WORK FOR YOU
-# Credits to Badal Mondal.
+# LaTeX-Präsentationsvorlage der HTWK Leipzig
 
-# Beamer-Präsentationsvorlage der Hochschule Leipzig
+> **DISCLAIMER:** This is not an official HTWK Leipzig template and comes with no guarantee of functionality.
+> 
+> `Original template created by Badal Mondal.`
+
 Latex-Präsentationsvorlage für die HTWK Leipzig basierend auf der Vorlage der Universität Leipzig von Badal Mondal.
 Diese Version ist ein Fork von [joossm/HTWK-Leipzig-Beamer-Template](https://github.com/joossm/HTWK-Leipzig-Beamer-Template).
 
