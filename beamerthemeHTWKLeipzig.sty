@@ -79,19 +79,22 @@
 \setbeamertemplate{navigation symbols}{}
 
 %%%%%%% Footline background (not footer) %%%%%%%%%%%%%%%%%%%%
+\newcommand{\CommonFooterLayout}{
+    \node[anchor=south west, black, yshift=3pt] at (0.055,0.96) {\textcolor{black}{\tiny \textsf{\firstLine}}};
+    \node[anchor=south west, black, yshift=-3pt] at (0.055,0.96) {\textcolor{black}{\tiny \textsf{\secondLine}}};
+    % Add page number at bottom left
+    \node[anchor=south west, black] at (0.018, 0.955) {\tiny \insertframenumber};
+    %LOGO 
+    \node[anchor=south west, black] at (0.86, 0.96) { \includegraphics[height=10pt, keepaspectratio]{imglib/HTWK_OHNE.png}};
+}
+
 \setbeamertemplate{background}{
     \begin{tikzpicture}[remember picture, overlay,shift=(current page.north west)]
         \begin{scope}
             [x={(current page.north east)},y={(current page.south west)}]
             \draw[mainColor,fill=mainColor, thin] (0.0,0.03) -- (0.03,0.03) -- (0.03,0.15) -- (0.0,0.15) -- cycle;
             \draw[mainColor,fill=mainColor, thin] (0.97,0.03) -- (1,0.03) -- (1,0.15) -- (0.97,0.15) -- cycle;
-            \node[anchor=south west, black, yshift=3pt] at (0.055,0.96) {\textcolor{black}{\tiny \textsf{\firstLine}}};
-            \node[anchor=south west, black, yshift=-3pt] at (0.055,0.96) {\textcolor{black}{\tiny \textsf{\secondLine}}};
-            % Add page number at bottom left
-            \node[anchor=south west, black] at (0.018, 0.96) { \insertframenumber};
-
-            %LOGO 
-            \node[anchor=south west, black] at (0.86, 0.96) { \includegraphics[height=10pt, keepaspectratio]{imglib/HTWK_OHNE.png}};
+            \CommonFooterLayout
         \end{scope}
     \end{tikzpicture}
 }
@@ -122,15 +125,8 @@
             [x={(current page.north east)},y={(current page.south west)}]
             \draw[mainColor,fill=mainColor, thin] (0.0,0.2) -- (0.03,0.2) -- (0.03,0.7) -- (0.0,0.7) -- cycle;
             \draw[mainColor,fill=mainColor, thin] (0.97,0.2) -- (1,0.2) -- (1,0.7) -- (0.97,0.7) -- cycle;
-            \node[anchor=south west, black, yshift=3pt] at (0.055,0.96) {\textcolor{black}{\tiny \textsf{\firstLine}}};
-            \node[anchor=south west, black, yshift=-3pt] at (0.055,0.96) {\textcolor{black}{\tiny \textsf{\secondLine}}};
-            % Add page number at bottom left
-            \node[anchor=south west, black] at (0.018, 0.96) { \insertframenumber};
-
-            %LOGO 
-            \node[anchor=south west, black] at (0.86, 0.96) { \includegraphics[height=10pt, keepaspectratio]{imglib/HTWK_OHNE.png}};
+            \CommonFooterLayout
         \end{scope}
-
     \end{tikzpicture}
 }}
 
@@ -241,15 +237,17 @@
 \setbeamertemplate{bibliography item}{\insertbiblabel}
 
 % Itemizesymbol
-\setbeamercolor{itemize item}{fg=mainColor}
+\definecolor{itemColor}{RGB}{0,0,0}
+
+\setbeamercolor{itemize item}{fg=itemColor}
 \setbeamertemplate{itemize item}{--}
-\setbeamercolor{itemize subitem}{fg=mainColor}
+\setbeamercolor{itemize subitem}{fg=itemColor}
 \setbeamertemplate{itemize subitem}{--}
-\setbeamercolor{itemize subsubitem}{fg=mainColor}
+\setbeamercolor{itemize subsubitem}{fg=itemColor}
 \setbeamertemplate{itemize subsubitem}{--}
-\setbeamercolor{enumerate item}{fg=mainColor}
-\setbeamercolor{enumerate subitem}{fg=mainColor}
-\setbeamercolor{enumerate subitem}{fg=mainColor}
+\setbeamercolor{enumerate item}{fg=itemColor}
+\setbeamercolor{enumerate subitem}{fg=itemColor}
+\setbeamercolor{enumerate subitem}{fg=itemColor}
 
 %%%%%%%%%%%%%%%%%%%% Captions %%%%%%%%%%%%%%%%%%%%%%
 \setbeamercolor{caption name}{fg=black!50}
