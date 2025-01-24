@@ -9,3 +9,6 @@
 *.toc
 *.xml
 /build/
+
+# Misc
+.DS_Store

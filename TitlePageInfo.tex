@@ -1,6 +1,13 @@
 %%%%%%%%%% TITLE PAGE %%%%%%%%%%
-\title[\presentationShortTitle]{\presentationTitle\\\presentationTitleSecond}
-\subtitle[\presentationShortSubtitle]{\presentationSubtitle}
+\title[\presentationShortTitle]{%
+    \ifx\moduleName\empty\else{\normalfont\small\moduleName}\\[-0.3em]\fi%
+    \ifx\presentationPreTitle\empty\else{\normalfont\normalsize\presentationPreTitle}\\\vspace{0.7em}\fi%
+    \presentationTitle%
+    \ifx\presentationTitleSecond\empty\else\\\presentationTitleSecond\fi%
+}
+\ifx\presentationSubtitle\empty\else
+    \subtitle[\presentationShortSubtitle]{\presentationSubtitle}
+\fi
 \author{\authorName}
 \newcommand{\faculty}{\authorDepartment}
 \newcommand{\university}{\universityName}
