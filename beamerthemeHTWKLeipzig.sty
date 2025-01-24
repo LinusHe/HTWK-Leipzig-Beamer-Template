@@ -215,13 +215,28 @@
 \def\definepagelayoutwithAR{\SpecialPageLayout}
 %% This is to make table of contents/ overview slide after title page
 \newcommand{\maketableofcontents}{
-        {
-        \definepagelayoutwithAR
-        \begin{frame}{Gliederung}
-            \tableofcontents
-            \vspace*{8em}  %%MOVE THE Gliederung up to the top
-        \end{frame}
-    }
+  {
+    \definepagelayoutwithAR
+    \begin{frame}{Gliederung}
+      \begingroup
+        % Revert to default \enditemize
+        \let\enditemize\oldenditemize
+
+        % Reset item spacing
+        \setlength{\topsep}{0pt}
+        \setlength{\parsep}{0pt}
+        \setlength{\itemsep}{0pt}
+
+        % Reset paragraph spacing & line spacing
+        \setlength{\parskip}{0pt}
+        \linespread{1.1}\selectfont
+
+        \tableofcontents
+      \endgroup
+
+      \vspace*{8em}
+    \end{frame}
+  }
 }
 
 %% This will show table of content slides before move to each subsection
