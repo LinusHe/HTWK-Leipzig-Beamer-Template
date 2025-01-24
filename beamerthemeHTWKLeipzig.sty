@@ -222,9 +222,18 @@
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%% Re-position Footnote %%%%%%%%%%%%%%%%%%%%
+\newcounter{firstfootnoteonpage}
+\AddToHook{shipout/before}{%
+  \setcounter{firstfootnoteonpage}{0}%
+}
+
 \setbeamertemplate{footnote}{%
-    \raggedright\hspace*{0.005\textwidth}\vspace*{2pt}%{\insertfootnotemark}
-    \parbox{1\textwidth}{$^{\text{\tiny\thefootnote}}$\tiny\insertfootnotetext}
+    \raggedright\hspace*{0.005\textwidth}\vspace*{2pt}%
+    \ifnum\value{firstfootnoteonpage}=0\relax
+        \rule{50pt}{0.4pt}\par\vspace{2pt}%
+        \stepcounter{firstfootnoteonpage}%
+    \fi
+    \parbox{1\textwidth}{$^{\text{\tiny\thefootnote}}$\tiny\insertfootnotetext}%
 }
 
 \newcommand\addfootspace[1]{%
