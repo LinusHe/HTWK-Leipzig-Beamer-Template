@@ -6,6 +6,24 @@
 
 \usepackage{Packages}
 
+%--------------- Personal Information ------------------------
+% Configure your personal information here
+\def\authorName{Your Name}
+\def\authorDepartment{Your Department}
+\def\universityName{Your University}
+
+% Configure presentation information
+\def\presentationTitle{Your Presentation Title}
+\def\presentationTitleSecond{Second Line of Title} % Optional
+\def\presentationShortTitle{Short Title} % For header/footer
+\def\presentationSubtitle{Your Presentation Subtitle}
+\def\presentationShortSubtitle{Short Subtitle} % For header/footer
+\def\presentationDate{\today} % Set to specific date like: January 30, 2024
+
+% Set footer information
+\setFirstLine{\textbf{\authorName}, \authorDepartment}
+\setSecondLine{\universityName}
+
 \import{./}{TitlePageInfo.tex}
 \addbibresource{references.bib}
 

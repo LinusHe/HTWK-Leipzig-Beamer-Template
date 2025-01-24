@@ -27,9 +27,14 @@
 % \\\university}
 
 %FOOTER TEXT
-\newcommand{\firstLine}{\textbf{Linus Herterich}, Medieninformatik Master 22-MIM}
-\newcommand{\secondLine}{Hochschule für Technik, Wirtschaft und Kultur Leipzig}
+\newcommand{\firstLine}{\@firstLine}
+\newcommand{\secondLine}{\@secondLine}
 
+\def\@firstLine{\textbf{Author Name}, Department}
+\def\@secondLine{University Name}
+
+\newcommand{\setFirstLine}[1]{\def\@firstLine{#1}}
+\newcommand{\setSecondLine}[1]{\def\@secondLine{#1}}
 
 \makeatletter
 \setbeamercolor{title}{fg=black}
