@@ -17,6 +17,28 @@
 %%%%%%%%%%%%%%%% Title page Layout %%%%%%%%%%%%%%%
 %\setbeamersize{sidebar width left=1mm, sidebar width right=1mm}
 
+
+% Add these settings near the itemize settings
+% Increase spacing between items
+% Itemize spacing
+\setbeamertemplate{itemize/enumerate body begin}{%
+    \setlength{\topsep}{0.2em}     % Abstand vor der Liste
+    \setlength{\parsep}{0.8em}   % Abstand nach der Liste
+    \setlength{\itemsep}{0.8em}  % Abstand zwischen Items
+}
+
+% Add this to automatically add space after nested itemize environments
+\let\oldenditemize\enditemize
+\def\enditemize{%
+  \oldenditemize%
+  \ifnum\@itemdepth>1\relax\vspace{0.5em}\fi%
+}
+
+\setlength{\parskip}{0.5em}  % Space between paragraphs within items
+
+% Increase line spacing globally
+\linespread{1.2}  % Adjust this value (1.3 = 130% of normal spacing)
+
 \newcommand{\titleHeaderLayout}
 {
 % trim={<left> <lower> <right> <upper>}
@@ -119,7 +141,13 @@
 
 }
 %%%%%%% Frame title %%%%%%%%%%%%%%%
-\setbeamertemplate{frametitle}{\vskip 10pt\color{black}\bfseries \insertframetitle\par \vskip 16pt}
+\setbeamertemplate{frametitle}{
+    \vskip 10pt
+    \color{black}\bfseries \insertframetitle\par 
+    \vskip 10pt
+}
+
+\setbeamertemplate{frame begin}{\vskip 0pt}
 
 
 %%%%%%%%%%%%%%%%%%%% Section page layout for 16/9 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -214,7 +242,7 @@
     \AtBeginSection[]
     {{
         \definepagelayoutwithAR
-        \begin{frame}
+        \begin{frame}[c]
             \textbf{\LARGE {\insertsection}}
 
         \end{frame}
@@ -222,30 +250,89 @@
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%% Re-position Footnote %%%%%%%%%%%%%%%%%%%%
+\renewcommand{\footnoterule}{} % Keine Trennlinie
+
 \newcounter{firstfootnoteonpage}
 \AddToHook{shipout/before}{%
   \setcounter{firstfootnoteonpage}{0}%
 }
 
+% \makeatletter
+% % Sammel-Makro für alle Fußnoten pro Frame
+% \newcommand{\footnotelistcontent}{}
+
+% \newcommand{\addfootnotecontent}[1]{%
+%   \stepcounter{footnote}%  % erhöht den *offiziellen* Fußnoten-Zähler
+%   \protected@xdef\footnotelistcontent{%
+%     \footnotelistcontent
+%     \tiny$^{\thefootnote}$#1\par\vspace{0.5em}}%
+% }
+
+% % Hier wird nur gesammelt, nicht direkt gedruckt
+% \setbeamertemplate{footnote}{%
+%   \addfootnotecontent{\insertfootnotetext}%
+% }
+
+% % Bei jedem Frame-Start alten Inhalt löschen und Zählung neu beginnen
+% \def\beamer@framenotesbegin{%
+%   \gdef\footnotelistcontent{}%
+%   \setcounter{footnote}{0}%
+% }
+
+% % Am Frame-Ende gesammelte Fußnoten an *einer* Stelle ausgeben
+% \def\beamer@framenotesend{%
+%   \ifx\footnotelistcontent\@empty
+%     % keine Fußnoten => nichts ausgeben
+%   \else
+%     \begin{tikzpicture}[remember picture,overlay]
+%       \node[anchor=south west, inner sep=0pt] 
+%         at ([xshift=0.06\paperwidth, yshift=0.11\paperheight]current page.south west) {%
+%           \begin{minipage}{0.9\paperwidth}
+%             \raggedright
+%             \footnotelistcontent
+%           \end{minipage}%
+%         };
+%     \end{tikzpicture}%
+%   \fi
+% }
+% \makeatother
+
+\makeatletter
+
+\newcommand{\footnotelistcontent}{}
+
+\newcommand{\addfootnotecontent}[1]{%
+  % -- Nicht noch einmal \stepcounter{footnote} aufrufen!
+  \protected@xdef\footnotelistcontent{%
+    \footnotelistcontent
+    \tiny$^{\thefootnote}$#1\par\vspace{0.5em}}%
+}
+
 \setbeamertemplate{footnote}{%
-    \raggedright\hspace*{0.005\textwidth}\vspace*{2pt}%
-    \ifnum\value{firstfootnoteonpage}=0\relax
-        \rule{50pt}{0.4pt}\par\vspace{2pt}%
-        \stepcounter{firstfootnoteonpage}%
-    \fi
-    \parbox{1\textwidth}{$^{\text{\tiny\thefootnote}}$\tiny\insertfootnotetext}%
+  \addfootnotecontent{\insertfootnotetext}%
 }
 
-\newcommand\addfootspace[1]{%
-    \begingroup
-    \renewcommand\thefootnote{}\footnote{#1}%
-    \addtocounter{footnote}{-1}%
-    \endgroup
+\def\beamer@framenotesbegin{%
+  \gdef\footnotelistcontent{}%
+  \setcounter{footnote}{0}% Falls du jede Folie wieder bei 1 anfangen möchtest
 }
 
-%%%%%%%%%%% Switch off the footnoterule %%%%%%%%%%%%%%%%%%%%%%%
-\renewcommand{\footnoterule}{}
-%\renewcommand{\footnoterule}{\kern -20pt \hrule width \columnwidth \kern 25pt}
+\def\beamer@framenotesend{%
+  \ifx\footnotelistcontent\@empty
+  \else
+    \begin{tikzpicture}[remember picture,overlay]
+      \node[anchor=south west, inner sep=0pt]
+        at ([xshift=0.06\paperwidth, yshift=0.11\paperheight]current page.south west) {%
+          \begin{minipage}{0.9\paperwidth}
+            \raggedright
+            \footnotelistcontent
+          \end{minipage}%
+        };
+    \end{tikzpicture}%
+  \fi
+}
+\makeatother
+
 
 %%%%%%%%%%% Bibliograpy items as number %%%%%%%%%%%%%%%%%%%
 \setbeamertemplate{bibliography item}{\insertbiblabel}
