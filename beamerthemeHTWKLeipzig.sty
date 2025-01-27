@@ -107,7 +107,7 @@
 
 %%%%%%% Footline background (not footer) %%%%%%%%%%%%%%%%%%%%
 \newcommand{\CommonFooterLayout}{
-    \node[anchor=south west, black, yshift=3pt] at (0.055,0.96) {\textcolor{black}{\tiny \textsf{\firstLine}}};
+    \node[anchor=south west, black, yshift=4pt] at (0.055,0.96) {\textcolor{black}{\tiny \textsf{\firstLine}}};
     \node[anchor=south west, black, yshift=-3pt] at (0.055,0.96) {\textcolor{black}{\tiny \textsf{\secondLine}}};
     % Add page number at bottom left
     \node[anchor=south west, black] at (0.018, 0.955) {\tiny \insertframenumber};
@@ -272,46 +272,6 @@
   \setcounter{firstfootnoteonpage}{0}%
 }
 
-% \makeatletter
-% % Sammel-Makro für alle Fußnoten pro Frame
-% \newcommand{\footnotelistcontent}{}
-
-% \newcommand{\addfootnotecontent}[1]{%
-%   \stepcounter{footnote}%  % erhöht den *offiziellen* Fußnoten-Zähler
-%   \protected@xdef\footnotelistcontent{%
-%     \footnotelistcontent
-%     \tiny$^{\thefootnote}$#1\par\vspace{0.5em}}%
-% }
-
-% % Hier wird nur gesammelt, nicht direkt gedruckt
-% \setbeamertemplate{footnote}{%
-%   \addfootnotecontent{\insertfootnotetext}%
-% }
-
-% % Bei jedem Frame-Start alten Inhalt löschen und Zählung neu beginnen
-% \def\beamer@framenotesbegin{%
-%   \gdef\footnotelistcontent{}%
-%   \setcounter{footnote}{0}%
-% }
-
-% % Am Frame-Ende gesammelte Fußnoten an *einer* Stelle ausgeben
-% \def\beamer@framenotesend{%
-%   \ifx\footnotelistcontent\@empty
-%     % keine Fußnoten => nichts ausgeben
-%   \else
-%     \begin{tikzpicture}[remember picture,overlay]
-%       \node[anchor=south west, inner sep=0pt] 
-%         at ([xshift=0.06\paperwidth, yshift=0.11\paperheight]current page.south west) {%
-%           \begin{minipage}{0.9\paperwidth}
-%             \raggedright
-%             \footnotelistcontent
-%           \end{minipage}%
-%         };
-%     \end{tikzpicture}%
-%   \fi
-% }
-% \makeatother
-
 \makeatletter
 
 \newcommand{\footnotelistcontent}{}
@@ -350,7 +310,7 @@
 
 
 %%%%%%%%%%% Bibliograpy items as number %%%%%%%%%%%%%%%%%%%
-\setbeamertemplate{bibliography item}{\insertbiblabel}
+% \setbeamertemplate{bibliography item}{\insertbiblabel}
 
 % Itemizesymbol
 \definecolor{itemColor}{RGB}{0,0,0}
