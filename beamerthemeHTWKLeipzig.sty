@@ -2,6 +2,7 @@
 
 % Replace fontspec with helvet for Arial-like font
 \usepackage[scaled]{helvet}
+\usepackage{changepage}
 \renewcommand{\familydefault}{\sfdefault}
 
 \usepackage{tikz}
@@ -10,12 +11,42 @@
 
 %%%%%%% Define color %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \definecolor{mainColor}{RGB}{255, 237, 0}
-
 \definecolor{hellgrau}{RGB}{201, 201, 201}
 \definecolor{basalt}{RGB}{38, 42, 49}
+\definecolor{linkblue}{RGB}{0, 0, 238}  % Standard hyperlink blue color
+
+% Set hyperlink colors
+\hypersetup{
+    colorlinks=true,
+    urlcolor=linkblue,
+    linkcolor=black,
+    citecolor=black
+}
 
 %%%%%%%%%%%%%%%% Title page Layout %%%%%%%%%%%%%%%
 %\setbeamersize{sidebar width left=1mm, sidebar width right=1mm}
+% Define the footer height
+\newlength{\footerheight}
+\setlength{\footerheight}{40pt}  % Adjust this value as needed
+
+% Adjust the text height to account for footer
+\newcommand{\adjustframeheight}{%
+  \addtolength{\textheight}{-\footerheight}%
+}
+
+% Apply the adjustment to frames with allowframebreaks
+\BeforeBeginEnvironment{frame}{%
+  \@ifnextchar[\frame@adjust{\adjustframeheight}%
+}
+
+\def\frame@adjust[#1]{%
+  \def\temp{#1}%
+  \def\tempb{allowframebreaks}%
+  \ifx\temp\tempb
+    \adjustframeheight
+  \fi
+}
+
 
 
 % Add these settings near the itemize settings
@@ -78,7 +109,7 @@
     \end{beamercolorbox}
     \vskip1em\par
     \vspace*{2em}
-    \begin{beamercolorbox}[sep=8pt,center]{title}
+    \begin{beamercolorbox}[sep=5pt,center]{title}
         \usebeamerfont{title}\inserttitle\par%
         \ifx\insertsubtitle\@empty%
         \else%
@@ -144,7 +175,7 @@
 \setbeamertemplate{frametitle}{
     \vskip 10pt
     \color{black}\bfseries \insertframetitle\par 
-    \vskip 10pt
+    \vskip 5pt
 }
 
 \setbeamertemplate{frame begin}{\vskip 0pt}
